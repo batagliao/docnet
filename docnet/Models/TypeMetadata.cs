@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using docnet.Extensions;
 
 namespace docnet.Models
 {
@@ -19,8 +20,6 @@ namespace docnet.Models
             TypeInfo = type.GetTypeInfo();
             Category = type.GetCategory();
         }
-
-        
 
         public TypeInfo TypeInfo { get; set; }
 

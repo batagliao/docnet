@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "docnet", "docnet.csproj", "{59168A50-2B0E-4339-9B34-55811E0BCCAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "docnet", "docnet\docnet.csproj", "{59168A50-2B0E-4339-9B34-55811E0BCCAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "docnet.tests", "docnet.tests\docnet.tests.csproj", "{4D50BF36-EDF3-42EC-8FB3-1AB9907BBD06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{59168A50-2B0E-4339-9B34-55811E0BCCAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59168A50-2B0E-4339-9B34-55811E0BCCAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59168A50-2B0E-4339-9B34-55811E0BCCAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D50BF36-EDF3-42EC-8FB3-1AB9907BBD06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D50BF36-EDF3-42EC-8FB3-1AB9907BBD06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D50BF36-EDF3-42EC-8FB3-1AB9907BBD06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D50BF36-EDF3-42EC-8FB3-1AB9907BBD06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
