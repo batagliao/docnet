@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using docnet.MetadataReaders;
 using docnet.Models;
+using docnet.Renderers;
 
 namespace docnet
 {
@@ -22,6 +23,9 @@ namespace docnet
                 var assembly = Assembly.LoadFrom(path);
                 var reader = new AssemblyReader(assembly);
                 reader.Read();
+
+                var renderer = new TemplateRenderer();
+                renderer.RenderAssembly(reader.Metadata);
 
                 //foreach (var item in reader.Namespaces)
                 //{

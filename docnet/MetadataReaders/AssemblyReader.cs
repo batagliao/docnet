@@ -10,7 +10,7 @@ namespace docnet.MetadataReaders
 {
     public class AssemblyReader
     {
-        public List<NamespaceMetadata> Namespaces { get; set; } = new List<NamespaceMetadata>();
+        public AssemblyMetadata Metadata = null;
         private Assembly _assembly;
 
         public AssemblyReader(Assembly assembly)
@@ -20,22 +20,26 @@ namespace docnet.MetadataReaders
 
         public void Read()
         {
+            Metadata = new AssemblyMetadata();
+
             var types = _assembly.GetTypes();
 
             foreach (var type in types)
             {
                 string typeNamespace = type.Namespace;
+                //TODO: ReadType
                 IncludeTypeInNamespace(type, typeNamespace);
+
             }
         }
 
         private void IncludeTypeInNamespace(Type type, string namespaceName)
         {
-            var ns = Namespaces.FirstOrDefault(n => n.NamespaceName == namespaceName);
+            var ns = Metadata.Namespaces.FirstOrDefault(n => n.NamespaceName == namespaceName);
             if(ns == null)
             {
                 ns = new NamespaceMetadata(namespaceName);
-                Namespaces.Add(ns);
+                Metadata.Namespaces.Add(ns);
             }
 
             ns.AddType(type);
