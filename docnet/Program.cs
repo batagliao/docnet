@@ -25,7 +25,7 @@ namespace docnet
                 reader.Read();
 
                 var renderer = new TemplateRenderer();
-                renderer.RenderAssembly(reader.Metadata);
+                renderer.RenderAll(reader.Metadata);
 
                 //foreach (var item in reader.Namespaces)
                 //{

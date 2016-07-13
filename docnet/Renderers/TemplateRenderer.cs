@@ -39,7 +39,22 @@ namespace docnet.Renderers
             _razorEngine = RazorEngineService.Create(config);
         }
 
-        public void RenderAssembly(AssemblyMetadata metadata)
+        public void RenderAll(AssemblyMetadata metadata)
+        {
+            if (Directory.Exists(OUT_DIR))
+            {
+                //clean dir
+                Parallel.ForEach(Directory.GetFiles(OUT_DIR), (file) => File.Delete(file));
+            }
+            else
+            {
+                Directory.CreateDirectory(OUT_DIR);
+            }
+
+            RenderAssembly(metadata);
+        }
+
+        private void RenderAssembly(AssemblyMetadata metadata)
         {
             string content = _razorEngine.RunCompile(GetTemplatePath(ASSEMBLY_VIEW), typeof(AssemblyMetadata), metadata);
             WriteContentToFile(content, metadata.HashId);
@@ -63,10 +78,7 @@ namespace docnet.Renderers
 
         private void WriteContentToFile(string content, string hash)
         {
-            if (!Directory.Exists(OUT_DIR))
-            {
-                Directory.CreateDirectory(OUT_DIR);
-            }
+            
 
             string file = $"{Path.Combine(OUT_DIR, hash)}.htm";
             File.WriteAllText(file, content);
