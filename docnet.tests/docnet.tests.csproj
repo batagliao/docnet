@@ -53,6 +53,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Extensions\TypeExtensionsTest.cs" />
+    <Compile Include="MetadataReaders\AssemblyReaderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

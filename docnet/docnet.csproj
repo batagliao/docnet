@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DryIoc, Version=2.6.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DryIoc.dll.2.6.3\lib\net45\DryIoc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="RazorEngine, Version=3.8.2.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
       <HintPath>..\packages\RazorEngine.3.8.2\lib\net45\RazorEngine.dll</HintPath>
       <Private>True</Private>
@@ -51,6 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\AssemblyMetadataExtension.cs" />
+    <Compile Include="Infrastructure\Bootstrap.cs" />
+    <Compile Include="MetadataReaders\IAssemblyReader.cs" />
+    <Compile Include="MetadataReaders\INamespaceReader.cs" />
+    <Compile Include="MetadataReaders\NamespaceReader.cs" />
     <Compile Include="Models\AssemblyMetadata.cs" />
     <Compile Include="Models\MetadataBase.cs" />
     <Compile Include="Models\TypeCategoryEnum.cs" />
@@ -66,6 +75,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Views\Namespace.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Views\Assembly.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

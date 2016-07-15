@@ -14,6 +14,11 @@ namespace docnet.Models
         /// <summary>
         /// Identifier for hyperlinks
         /// </summary>
-        public string HashId { get; } = Guid.NewGuid().ToString();
+        public Guid HashId { get; } = Guid.NewGuid();
+
+        public string LinkUrl
+        {
+            get { return HashId.ToString(); }
+        }
     }
 }

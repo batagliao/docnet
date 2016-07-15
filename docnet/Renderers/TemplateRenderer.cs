@@ -57,13 +57,18 @@ namespace docnet.Renderers
         private void RenderAssembly(AssemblyMetadata metadata)
         {
             string content = _razorEngine.RunCompile(GetTemplatePath(ASSEMBLY_VIEW), typeof(AssemblyMetadata), metadata);
-            WriteContentToFile(content, metadata.HashId);
+            WriteContentToFile(content, metadata.LinkUrl);
+
+            foreach (var item in metadata.Namespaces)
+            {
+                RenderNamespaces(item);
+            }
         }
 
         private void RenderNamespaces(NamespaceMetadata metadata)
         {
-            string content = _razorEngine.Run(GetTemplatePath(NAMESPACE_VIEW), typeof(NamespaceMetadata), metadata);
-            WriteContentToFile(content, metadata.HashId);
+            string content = _razorEngine.RunCompile(GetTemplatePath(NAMESPACE_VIEW), typeof(NamespaceMetadata), metadata);
+            WriteContentToFile(content, metadata.LinkUrl);
         }
 
         private string GetTemplatePath(string templateName)

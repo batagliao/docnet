@@ -8,6 +8,7 @@ namespace docnet.Models
 {
     public class AssemblyMetadata : MetadataBase
     {
+        public string AssemblyName { get; set; }
         public List<NamespaceMetadata> Namespaces = new List<NamespaceMetadata>();
     }
 }

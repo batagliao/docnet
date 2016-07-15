@@ -4,45 +4,29 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using docnet.Extensions;
 using docnet.Models;
 
 namespace docnet.MetadataReaders
 {
-    public class AssemblyReader
+    public class AssemblyReader : IAssemblyReader
     {
-        public AssemblyMetadata Metadata = null;
-        private Assembly _assembly;
-
-        public AssemblyReader(Assembly assembly)
+        public AssemblyMetadata Read(Assembly assembly)
         {
-            _assembly = assembly;
-        }
+            var metadata = new AssemblyMetadata();
+            metadata.AssemblyName = assembly.GetName().Name;
 
-        public void Read()
-        {
-            Metadata = new AssemblyMetadata();
-
-            var types = _assembly.GetTypes();
+            var types = assembly.GetTypes();
 
             foreach (var type in types)
             {
                 string typeNamespace = type.Namespace;
-                //TODO: ReadType
-                IncludeTypeInNamespace(type, typeNamespace);
-
+                metadata.IncludeTypeInNamespace(type, typeNamespace);
+                //TODO: read namespace
             }
+            return metadata;
         }
 
-        private void IncludeTypeInNamespace(Type type, string namespaceName)
-        {
-            var ns = Metadata.Namespaces.FirstOrDefault(n => n.NamespaceName == namespaceName);
-            if(ns == null)
-            {
-                ns = new NamespaceMetadata(namespaceName);
-                Metadata.Namespaces.Add(ns);
-            }
-
-            ns.AddType(type);
-        }
+        
     }
 }

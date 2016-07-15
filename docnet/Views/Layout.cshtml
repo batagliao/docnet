@@ -2,13 +2,19 @@
 @using docnet.Models
 @inherits RazorEngine.Templating.TemplateBase
 
+<html>
+<head>
+</head>
+<body>
+    <header>
+        <h1>Kike</h1>
+    </header>
 
-<header>
-    <h1>Kike</h1>
-</header>
+    @RenderBody()
 
-@RenderBody()
+    <footer>
+        footer
+    </footer>
+</body>
+</html>
 
-<footer>
-    footer
-</footer>

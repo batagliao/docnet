@@ -1,14 +1,26 @@
-﻿@using RazorEngine
+﻿
+@using RazorEngine.Templating
 @using docnet.Models
-@inherits RazorEngine.Templating.TemplateBase
 
-@{Layout = "Layout.cshtml";}
+@inherits TemplateBase<AssemblyMetadata>
 
-<header>
-    <h1>Kike</h1>   
-</header>
+@{
+    Layout = "Layout.cshtml";
+}
 
+<h2>@Model.AssemblyName</h2>
 
-<footer>
-    footer
-</footer>
+<h3>Namespaces</h3>
+<table>
+    <tr>
+        <th>Namespace</th>
+        <th>Descrição</th>
+    </tr>
+    @foreach (NamespaceMetadata n in Model.Namespaces)
+    {
+        <tr>
+            <td><a href="@n.LinkUrl">@n.NamespaceName</a></td>
+            <td>@n.Summary</td>
+        </tr>
+    }
+</table>

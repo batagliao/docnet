@@ -1,0 +1,29 @@
+﻿
+@using RazorEngine.Templating
+@using System.Reflection
+@using System
+@using docnet.Models
+
+@inherits TemplateBase<NamespaceMetadata>
+
+@{
+    Layout = "Layout.cshtml";
+}
+
+<h2>@Model.NamespaceName</h2>
+
+/
+<h3>Tipos</h3>
+<table>
+    <tr>
+        <th>Tipo</th>
+        <th>Descrição</th>
+    </tr>
+    @foreach (TypeMetadata t in Model.Types)
+    {
+        <tr>
+            <td><a href="@t.LinkUrl">@t.TypeInfo.Name</a></td>
+            <td>@t.Summary</td>
+        </tr>
+    }
+</table>
